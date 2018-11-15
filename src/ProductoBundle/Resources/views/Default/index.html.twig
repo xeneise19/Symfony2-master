@@ -14,7 +14,7 @@
             		<h5>{{producto.getName()}}</h5>
             		<p>${{producto.getPrice()}}</p>
             		<a href="{{path('productDetail',{id:producto.getId()})}}" class="button expanded">Detalles</a>
-            		<a href="#" class="button expanded">Agregar a Carrito</a>
+            		<a href="#" class="button expanded" id="addToCart">Agregar a Carrito</a>
       			</div>
             {%endfor%}
         </div>

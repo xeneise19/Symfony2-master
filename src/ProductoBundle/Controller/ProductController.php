@@ -23,9 +23,11 @@ class ProductController extends Controller
     																		]);
     }
     /**
-     *@Route("/products/cart/add/{id}/quantity/{quantity}" , name="product_add_cart")
+     *@Route("/add" , name="product_add_cart", methods="POST")
      */
-    public function addToCartAction($id,$quantity){
+    public function addToCartAction(Request $r){
+        $id=$r->get('id');
+        $quantity=$r->get('quantity');
         $producto= $this->getDoctrine()
         ->getRepository('ProductoBundle:Producto')
         ->find($id);

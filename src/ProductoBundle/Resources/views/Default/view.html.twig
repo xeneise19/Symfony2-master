@@ -40,19 +40,23 @@
                 <p>Stock: {{producto.stock}}</p>
                  
                 <div class="grid-x">
+                <form id="addToCart" action="{{ path('product_add_cart') }}" method="POST">
                     <div class="small-3 cell">
                         <label for="middle-label" class="middle">Cantidad:</label>
                     </div>
                     <div class="small-1 cell">
-                        <input type="text" id="middle-label" placeholder="0">
+                        <input type="hidden" name="id" value="{{ producto.id }}">
+                        <input type="text" id="middle-label" name="quantity" placeholder="0">
                     </div>
                 </div>
-                <a href="#" class="button large expanded">Agregar a Carrito</a>
+                <button type="submit" class="button large expanded" id="addToCart">Agregar a Carrito</button>
+                </form>
                 <div class="small secondary expanded button-group">
                     <a class="button">Facebook</a>
                     <a class="button">Twitter</a>
                     <a class="button">Yo</a>
                 </div>
+                
              </div>
         </div>
      

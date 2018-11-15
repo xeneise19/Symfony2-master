@@ -7,34 +7,39 @@
 		
 	Class Cart implements CartInterface{
 			
-		private	$adapters=[];
+		private	$adapter;
+
 		public function __construct (SaveAdapter $adapter){
-			$this->adapters[]=$adapter;
+			$this->adapter = $adapter;
 		}
+
 		public function add(Product $producto, $quantity=1){
 			$quantity=(int) $quantity;
+
 			if($quantity<=0){
 				throw new \Exception("Cantidad invalida");
 				
 			}
 
-			foreach($this->adapters as $adapter){
-				$adapter->set($producto->getId(),json_encode([
+			$this->adapter->set($producto->getId(),json_encode([
 																'quantity'=>$quantity,
 																'product'=>$producto
-															]);
-			}
+			]));
 		}
+
 		public function get($id){
 			return $this->adapter->get($id);
 		}
+
 		public function getAll(){
 			$data=$this->adapter->getAll();
+
 			foreach ($data as &$item) {
 				$item = json_decode($item);
 			}
 			return $data;
 		}
+
 		public function replace($array){
 			return $this->adapter->replace($array);
 		}

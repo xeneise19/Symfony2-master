@@ -4,7 +4,7 @@ namespace ProductoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
+use Symfony\Component\HttpFoundation\Request;
 
 class ProductController extends Controller
 {
@@ -44,6 +44,6 @@ class ProductController extends Controller
     public function viewCartAction(){
         $cartService = $this->get('app.cart');
         $products= $cartService->getAll();
-        return $this->render('ProductoBundle:productos:cart.html.twig', ['productos'=>$products]);
+        return $this->render('ProductoBundle:productos:cart.html.twig', ['cart'=>$products]);
     }
 }

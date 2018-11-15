@@ -62,14 +62,16 @@
     </article>
 
     <script>
-    $(document).ready(function(){
-        $('#addToCart').on('submit',function(e){
-            e.preventDefault();
-            $.post('{{ path('product_add_cart')}}',$(this).serialize())
-            .done(function(data){
-                alert('Se agrego el producto al carrito');
+        {%if 'ajax' == cart_config.buy_mode%}
+        $(document).ready(function(){
+            $('#addToCart').on('submit',function(e){
+                e.preventDefault();
+                $.post('{{ path('product_add_cart')}}',$(this).serialize())
+                .done(function(data){
+                    alert('Se agrego el producto al carrito');
+                });
             });
         });
-    });
-</script>
+        {%endif%}
+    </script>
 {% endblock %}

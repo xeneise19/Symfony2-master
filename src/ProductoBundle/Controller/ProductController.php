@@ -23,7 +23,7 @@ class ProductController extends Controller
     																		]);
     }
     /**
-     *@Route("/add" , name="product_add_cart", methods="POST")
+     *@Route("/products/add" , name="product_add_cart", methods="POST")
      */
     public function addToCartAction(Request $r){
         $id=$r->get('id');
@@ -36,7 +36,8 @@ class ProductController extends Controller
         }
 
         $cartService = $this->get('app.cart');
-        $cartService->add($producto);        
+        $cartService->add($producto);
+        die();   
     }
     /**
      *@Route("/products/cart/view" , name="product_view_cart")

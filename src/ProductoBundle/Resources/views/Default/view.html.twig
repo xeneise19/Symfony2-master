@@ -65,7 +65,10 @@
     $(document).ready(function(){
         $('#addToCart').on('submit',function(e){
             e.preventDefault();
-            alert('Enviar peticion XHR al carrito');
+            $.post('{{ path('product_add_cart')}}',$(this).serialize())
+            .done(function(data){
+                alert('Se agrego el producto al carrito');
+            });
         });
     });
 </script>

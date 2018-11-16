@@ -1,0 +1,198 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-11-16T20:00:20.444Z",
+	"__export_source": "insomnia.desktop.app:v6.2.0",
+	"resources": [
+		{
+			"_id": "wrk_b697118bfacd4e789d670e73fc6ea1ad",
+			"created": 1542389350633,
+			"description": "",
+			"modified": 1542398375002,
+			"name": "Ecommarg",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_d09a9786a1f145cbbac8c91b2943eb34",
+			"color": null,
+			"created": 1542389350677,
+			"data": {},
+			"isPrivate": false,
+			"metaSortKey": 1542389350677,
+			"modified": 1542389350677,
+			"name": "New Environment",
+			"parentId": "wrk_b697118bfacd4e789d670e73fc6ea1ad",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_f682f966e4fb4c0a9e996bfc41d8df38",
+			"cookies": [],
+			"created": 1542389350680,
+			"modified": 1542389350680,
+			"name": "Default Jar",
+			"parentId": "wrk_b697118bfacd4e789d670e73fc6ea1ad",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_fe4a0196edf5475f9528ae0764b22f96",
+			"created": 1542398290429,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1542398290429,
+			"modified": 1542398290429,
+			"name": "Category",
+			"parentId": "wrk_b697118bfacd4e789d670e73fc6ea1ad",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_ac63a2401c1c423da70d3f1b2dc7545a",
+			"created": 1542398305717,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1542398305717,
+			"modified": 1542398305717,
+			"name": "Product",
+			"parentId": "wrk_b697118bfacd4e789d670e73fc6ea1ad",
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_b106ad4f22a54abdab89a6d7a5287445",
+			"authentication": {},
+			"body": {},
+			"created": 1542397099823,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1542397634944,
+			"method": "GET",
+			"modified": 1542398347877,
+			"name": "List",
+			"parameters": [],
+			"parentId": "fld_fe4a0196edf5475f9528ae0764b22f96",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000/categories/api/category/list",
+			"_type": "request"
+		},
+		{
+			"_id": "req_39aeb6b75fa147a4b1e67a7f29359ee5",
+			"authentication": {},
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_feb2a4c5c6864d44bbf111b36d450451",
+						"name": "name",
+						"value": "Auriculares"
+					}
+				]
+			},
+			"created": 1542397634894,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_4d1638adab3c46a2b957b1a206ec94a0",
+					"name": "Content-Type",
+					"value": "multipart/form-data"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1542397634894,
+			"method": "POST",
+			"modified": 1542398360688,
+			"name": "Create",
+			"parameters": [],
+			"parentId": "fld_fe4a0196edf5475f9528ae0764b22f96",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000/categories/api/category/new",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c471a083699b493eb168dc66e00e5ac4",
+			"authentication": {},
+			"body": {},
+			"created": 1542389400193,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1542389400193,
+			"method": "GET",
+			"modified": 1542398336155,
+			"name": "List",
+			"parameters": [],
+			"parentId": "fld_ac63a2401c1c423da70d3f1b2dc7545a",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8000/products/api/product/list",
+			"_type": "request"
+		},
+		{
+			"_id": "req_96532bf44608429181ebc8bb3c4a02ad",
+			"authentication": {},
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_e0ae5d02273647a8a212c233ab59f04d",
+						"name": "name",
+						"value": "Zapatillas de la salada"
+					},
+					{
+						"id": "pair_2a15a2082342457cb53edd3669c1c72e",
+						"name": "price",
+						"value": "10"
+					},
+					{
+						"id": "pair_a0d4676940fc42338d2cd8b3d73df6f2",
+						"name": "stock",
+						"value": "2"
+					}
+				]
+			},
+			"created": 1542395251258,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_48394a33bcf743208f6dd156ab062ac3",
+					"name": "Content-Type",
+					"value": "multipart/form-data"
+				},
+				{
+					"disabled": false,
+					"id": "pair_939a8a58a51b4f79ab93d8abb4587a6c",
+					"name": "",
+					"value": ""
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1542389400243,
+			"method": "POST",
+			"modified": 1542398324693,
+			"name": "Create",
+			"parameters": [],
+			"parentId": "fld_ac63a2401c1c423da70d3f1b2dc7545a",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8000/products/api/product/new",
+			"_type": "request"
+		}
+	]
+}

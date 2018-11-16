@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProductoApiType extends ProductoType{
-	
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
@@ -19,7 +19,7 @@ class ProductoApiType extends ProductoType{
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix()//simplifica el nombre de los campos en la api
     {
         return '';
     }

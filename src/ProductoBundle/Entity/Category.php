@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="ProductoBundle\Repository\CategoryRepository")
  */
-class Category
+class Category implements \JsonSerializable
 {
     /**
      * @var int
@@ -82,6 +82,14 @@ class Category
 
     public function __toString(){
         return $this->name;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+                'id' => $this->getId(),
+                'name' => $this->getName()
+                ];
     }
 }
 

@@ -50,7 +50,19 @@ class CategoryApiController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush();
+        }else{
+        	
+        	$errors=[];
+        	foreach($form->getErrors() as $error)
+        	{
+        		$errors[]= $error->getMessage();
 
+        	}
+        	
+
+        	$response->setStatusCode(406);
+
+        	return $response;
         }
 
         $response->setContent(json_encode($category));

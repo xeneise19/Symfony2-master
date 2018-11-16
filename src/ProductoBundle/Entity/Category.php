@@ -4,6 +4,7 @@ namespace ProductoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Category
@@ -27,6 +28,11 @@ class Category implements \JsonSerializable
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
+
+    /**
+     * @Assert\NotBlank
+     */
+    
     private $name;
 
     /**

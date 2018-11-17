@@ -50,22 +50,26 @@ class CategoryApiController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush();
+
+            $response->setContent(json_encode($category));
         }else{
-        	
-        	$errors=[];
-        	foreach($form->getErrors() as $error)
-        	{
-        		$errors[]= $error->getMessage();
 
+            $validator = $this->get('validator');
+            $errors = $validator->validate($category);
+
+            if (count($errors) > 0) {
+                $messages=[];
+
+                foreach ($errors as $violation) {
+                    $messages[$violation->getPropertyPath()][] = $violation->getMessage();
+                }
+
+                $response->setContent(json_encode($messages));
         	}
-        	
 
-        	$response->setStatusCode(406);
+        	$response->setStatusCode(400);
 
-        	return $response;
         }
-
-        $response->setContent(json_encode($category));
 
         return $response;
     }

@@ -5,6 +5,7 @@ namespace ProductoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use ecommarg\cart\ProductInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Producto
@@ -26,14 +27,14 @@ class Producto implements ProductInterface
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var float
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="price", type="float")
      */
     private $price;

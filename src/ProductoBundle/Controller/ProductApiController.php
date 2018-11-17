@@ -49,10 +49,25 @@ class ProductApiController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($producto);
-            $em->flush(); 
-        }
+            $em->flush();
+            $response->setContent(json_encode($producto));
+        }else{
+            $validator = $this->get('validator');
+            $errors = $validator->validate($producto);
 
-		$response->setContent(json_encode($producto));
+            if (count($errors) > 0) {
+                $messages = [];
+
+                foreach ($errors as $violation) {
+                    $messages[$violation->getPropertyPath()][] = $violation->getMessage();
+                }
+
+                $response->setContent(json_encode($messages));
+            }
+
+            $response->setStatusCode(400);
+
+        }
 
         return $response;
     }

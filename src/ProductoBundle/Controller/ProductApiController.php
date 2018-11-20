@@ -35,41 +35,43 @@ class ProductApiController extends Controller
      * @Route("products/api/product/new", name="products_api_product_new")
      * @Method("POST")
      */
-    public function newAction(Request $request)
+    public function newAction(Request $r)
     {
-        $producto = new Producto();
-        $form = $this->createForm('ProductoBundle\Form\ProductoApiType', $producto);
-        $form->handleRequest($request);
-
-	    $response= new Response();
-	    $response->headers->add([
-			'Content-Type'=>'application/json'
-		]);
-	    
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($producto);
-            $em->flush();
-            $response->setContent(json_encode($producto));
-        }else{
-            $validator = $this->get('validator');
-            $errors = $validator->validate($producto);
-
-            if (count($errors) > 0) {
-                $messages = [];
-
-                foreach ($errors as $violation) {
-                    $messages[$violation->getPropertyPath()][] = $violation->getMessage();
-                }
-
-                $response->setContent(json_encode($messages));
-            }
-
+        $product = new Producto();
+        $form = $this->createForm(
+            'ProductoBundle\Form\ProductoApiType',
+            $product,
+            [
+                'csrf_protection' => false
+            ]
+        );
+        $form->bind($r);
+        $valid = $form->isValid();
+        $response = new Response();
+        if(false === $valid){
             $response->setStatusCode(400);
-
+            $response->setContent(json_encode($this->getFormErrors($form)));
+            return $response;
         }
-
+        if (true === $valid) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $em->flush();
+            $response->setContent(json_encode($product));
+        }
         return $response;
     }
 
+    public function getFormErrors($form){
+        $errors = [];
+        if (0 === $form->count()){
+            return $errors;
+        }
+        foreach ($form->all() as $child) {
+            if (!$child->isValid()) {
+                $errors[$child->getName()] = (string) $form[$child->getName()]->getErrors();
+            }
+        }
+        return $errors;
+    }
 }
